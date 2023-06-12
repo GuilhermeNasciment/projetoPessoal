@@ -313,7 +313,36 @@ body {
     margin-left: 20%;
     width: 55vw;
     height: 65vh;
-    background-color: #ffffff;
+    background-color: #222020;
     border-radius: 6px;
     box-shadow: 7px 7px 7px #000000;
+}
+
+.texto_chart {
+  position: absolute;
+  height: 100px;
+  width: 355px;
+  margin-top: 100px;
+  left: 723px;
+
+}
+
+.texto_grafico {
+  font-family: sea;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+.logout {
+  height: 100px;
+  width: 100px;
+  margin-left: 1400px;
+  margin-top: 10px;
+}
+
+.logout img {
+  height: 50px;
+  width: 50px;
 }
