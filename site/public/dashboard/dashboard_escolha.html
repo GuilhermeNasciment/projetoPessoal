@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea of Thieves - Escolha</title>
+    <link rel="stylesheet" href="dashboards.css">
+    <link rel="icon" href="../assets/sea.png">
+</head>
+<body>
+    <div class="header">
+        <a class="logo" href="../index_logado.html" id="imgPerfil"><img src="../assets/logo.png"></a>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="profile">
+                <div class="profileIcon">
+                    <img src="../assets/Sample_User_Icon.png">
+                </div>
+                <p id="p_usuario">Usuário</p>
+                <div class="quiz">
+                    <button class="botao_quiz" onclick="">Quiz</button>
+                </div>
+                <div class="grafico">
+                    <a href="dashboard_grafico.html"><button class="botao_grafico" onclick="">Gráfico</button></a>
+                </div>
+                <div class="escolha">
+                <button class="botao_escolha" onclick="mostrarEscolha()">Faça sua escolha</button>
+            </div>
+                    </div>
+                </div>
+                <div class="card_escolha">
+                    <div class="texto_escolha">
+                        Faça sua escolha
+                    </div>
+                    <div class="escolhas">
+                        <div class="escolha_pen"><img src="../assets/Return_of_the_Damned_Team_Pendragon_promo.webp" alt=""></div>
+                        <div class="escolha_flame"><img src="../assets/Return_of_the_Damned_Team_Flameheart_promo.webp" alt=""></div>
+                    </div>
+                    <div class="botoes">
+                       <div class="selects">
+                        <select onchange="decidirTrip()" id="tripulacao">
+                            <option value="0">Escolha:</option>
+                            <option value="1">Pendragon</option>
+                            <option value="2">Flameheart</option>
+                        </select>
+                       </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+    p_usuario.innerHTML = sessionStorage.NOME_USUARIO
+   
+
+            function decidirTrip() {
+                var tripulacaoVar = Number (tripulacao.value)
+
+                if(tripulacaoVar > 0) {
+                    fetch("/usuarios/tripulacao", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                tripulacaoServer: tripulacaoVar,
+                usuarioServer:sessionStorage.ID_USUARIO
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+              
+                alert("Tripulação escolhido com sucesso");
+
+
+                setTimeout(() => {
+                    window.location = "dashboard.html";
+                }, 3000)
+
+                limparFormulario();
+                finalizarAguardar();
+            } else {
+                alert("Nenhum personagem inserido!")
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+                }
+
+
+            }
+
+    //function sumirMensagem() {
+        //cardErro.style.display = "none"
+    //}
+</script>

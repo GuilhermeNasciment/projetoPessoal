@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sea of Thieves - Minha cabine</title>
+    <link rel="stylesheet" href="dashboards.css">
+    <link rel="icon" href="../assets/sea.png">
+</head>
+<body>
+    <div class="header">
+        <a class="logo" href="../index_logado.html" id="imgPerfil"><img src="../assets/logo.png"></a>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="profile">
+                <div class="profileIcon">
+                    <img src="../assets/Sample_User_Icon.png">
+                </div>
+                <p id="p_usuario">Usuário</p>
+                <div class="quiz">
+                    <button class="botao_quiz" onclick="">Quiz</button>
+                </div>
+                <div class="grafico">
+                    <a href="dashboard_grafico.html"><button class="botao_grafico" onclick="">Gráfico</button></a>
+                </div>
+                <div class="escolha">
+                    <a href="dashboard_escolha.html"><button class="botao_escolha" onclick="">Faça sua escolha</button></a>
+            </div>
+                    </div>
+                </div>
+                <div class="movie">
+                    <div class="video" id="caixaConteudo">
+                        <video src="../assets/escolha.mp4"
+                        controls
+                        poster="../assets/pencrew.png"
+                        autoplay
+                        muted
+                        ></video>
+
+                    </div>
+                </div>
+        </div>
+
+    </div>
+</body>
+</html>
+<script>
+    p_usuario.innerHTML = sessionStorage.NOME_USUARIO
+</script>

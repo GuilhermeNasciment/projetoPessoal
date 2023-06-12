@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sea of Thieves</title>
+    <link rel="stylesheet" href="style/style.css" />
+    <link rel="icon" href="assets/sea.png">
+  </head>
+  <body>
+    <header class="header">
+        <a href="saiba.html" class="font-personalizada">Saiba mais</a>
+        <a class="logo"><img src="assets/logo.png" alt="" /></a> 
+        <a href="dashboard/dashboard.html" class="font-personalizada">Minha cabine</a>
+    </header>
+    <div>
+      <div class="container">
+        <div class="grad_superior"></div>
+      </div>
+      <div class="divisao_index">
+        Os personagens
+      </div>
+      <div class="container2">
+        <div class="grad_inferior"></div>
+        <div class="pendragon"><img class="image_anim" src="assets/pencorte.png"></div>
+        <div class="nomepen">
+          <span class="texto_nome_pen">Pendragon</span>
+        </div>
+        <div class="wiki_pen">
+          <span class="texto_wiki_pen">Pendragon é um personagem nobre e benevolente em Sea of Thieves. Ele é conhecido por sua bondade e sabedoria, buscando ajudar e guiar os jovens piratas pelo caminho correto.
+            Pendragon tem uma presença respeitável e inspiradora, representando a justiça e a luz nos mares. Sua história está ligada à luta contra Flameheart, e ele busca libertar outros piratas amaldiçoados. Sua liderança é marcada pela compaixão e pela busca de um mundo equilibrado e correto.</span>
+        </div>
+        <div class="grad_superior2"></div>
+      </div>
+      
+      <div class="container3">
+        <div class="flame"><img class="image_anim2" src="assets/flamecorte.png"></div>
+        <div class="nomeflame">
+          <span class="texto_nome_flame">Flameheart</span>
+        </div>
+        <div class="wiki_flame">
+          <span class="texto_wiki_flame">Flameheart é um poderoso antagonista de Sea of Thieves, conhecido por sua personalidade ardente e determinação em espalhar o medo e a destruição. Com uma voz ameaçadora e habilidades estratégicas, ele busca o poder supremo, manipulando e enganando outros piratas em seu caminho. Sua presença é acompanhada por chamas, simbolizando sua conexão com o fogo.</span>
+        </div>
+
+      </div>
+    </div>
+    <div class="footer">
+      <p class="texto_footer">Feito com amor por <a class="footer_nome" href="https://github.com/GuilhermeNasciment">Guilherme Nascimento</a> ♥ SPTech © 2023</p>
+    </div>
+  </body>
+</html>
+<script>
+  const pendragon = document.querySelector('.image_anim');
+  const posicao1 = 500;
+
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > posicao1) {
+        pendragon.classList.add('aparece1')
+    }
+  })
+
+  const flame = document.querySelector('.image_anim2');
+  const posicao2 = 1000;
+
+  window.addEventListener('scroll', () => {
+    if (window.pageYOffset > posicao2) {
+        flame.classList.add('aparece2')
+    }
+  })
+</script>

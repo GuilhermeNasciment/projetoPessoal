@@ -1,6 +1,11 @@
 @font-face {
     font-family: sea;
-    src: url(../../fonts/Windlass.ttf);
+    src: url(../fonts/Windlass.ttf);
+}
+
+@font-face {
+    font-family: outrosea;
+    src: url(../fonts/manuskript-antiqua-d.otf);
 }
 
 *{
@@ -10,9 +15,9 @@
 
 body {
     background-color: black;
-    display: flex;
     justify-content: center;
 }
+
 
 .font-personalizada{
     margin-top: 15px;
@@ -20,26 +25,30 @@ body {
     font-size: 25px;
     color: white;
     text-decoration: none;
+    width: 175px;
+    display: flex;
+    justify-content: center;
 }
 
 
 .header {
     align-items: start;
-    justify-content: space-evenly;
+    justify-content: space-around;
     display: flex;  
     height: 120px;
-    width: 100%;
+    width: 100vw;
     background: rgb(2,0,36);
     background: linear-gradient(0deg, rgba(2,0,36,0) 0%, rgba(0,0,0,1) 57%, rgba(0,0,0,1) 100%);
-    top: 0;
-    position: absolute;
+    position: fixed;
+    z-index: 1;
 }
 
-.logo {
-    margin: 10px;
+.logo { 
     display: flex;
     width: 150px;
     height: 65px;
+    position: absolute;
+    justify-content: center;
 }
 
 .container {
@@ -48,9 +57,196 @@ body {
     display: flex;
     align-items: start;
     justify-content: space-evenly;
-    background-image: url(../../assets/indexBackground.png);
-    background-size: 100%;;
+    background-image: url(../assets/indexBackground.png);
+    background-size: 100%;
     background-repeat: no-repeat;
+    
+}
+
+.grad_superior {
+    background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,0.9949229691876751) 30%, rgba(0,0,0,0) 80%);
+    display: flex;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    margin-top: 664px;
+    z-index: 0;
+}
+
+.grad_superior2 {
+    background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,0.9949229691876751) 30%, rgba(0,0,0,0) 80%);
+    display: flex;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+}
+
+.divisao_index {
+    display: flex;
+    font-family: sea;
+    font-size: 25px;
+    color: white;
+    text-decoration: none;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    
+}
+
+.grad_inferior {
+    background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.9949229691876751) 80%);
+    display: flex;
+    width: 100%;
+    height: 50px;
+    position: absolute;
+}
+
+.container2 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: start;
+    background: linear-gradient(180deg, #000000 15%, rgba(0, 0, 0, 0.3) 0.01%, #449B85 100%), #000000;
+    position: relative;
+}
+
+.texto_nome_pen {
+    font-family: sea;
+    font-weight: 500;
+font-size: 64px;
+line-height: 43px;
+text-align: center;
+color: #40917C;
+text-shadow: 0px 0px 15px #40917C;
+}
+
+.pendragon {
+    height: 100vh;
+    position: relative;
+}
+
+.pendragon img {
+    display: flex;
+    position: absolute;
+    bottom: 0%;
+    height: 650px;
+    height: 650px;
+}
+
+.nomepen {
+    margin-left: 590px;
+    margin-top: 100px;
+}
+
+.wiki_pen {
+    position: absolute;   
+    width: 630px;
+    height: 461px;
+    right: 300px;
+    top: 190px;
+}
+
+.texto_wiki_pen {
+    font-family: outrosea;
+    font-weight: 500;
+    color: white;
+    font-size: 20px;
+    line-height: 43px;
+    text-align: center;
+    z-index: 3;
+}
+
+.container3 {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    position: relative;
+    align-items: start;
+    background: linear-gradient(180deg, #000000 15%, rgba(0, 0, 0, 0.3) 0.01%, #F96F35 100%), #000000;
+    flex-direction: row;
+}
+
+.texto_nome_flame {
+    font-family: sea;
+    font-weight: 500;
+font-size: 64px;
+line-height: 43px;
+text-align: center;
+color: #F96F35;
+text-shadow: 0px 0px 15px #F96F35;
+}
+
+.flame {
+    height: 100vh;
+    position: relative;
+}
+
+.flame img {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    height: 650px;
+    opacity: 0;
+    transition: all 1.5s ease-out;
+}
+
+.nomeflame {
+    margin-left: 590px;
+    margin-top: 100px;
+}
+
+.wiki_flame {
+    position: absolute;   
+    width: 630px;
+    height: 461px;
+    right: 300px;
+    top: 190px;
+}
+
+.texto_wiki_flame {
+    font-family: outrosea;
+    font-weight: 500;
+    color: white;
+    font-size: 20px;
+    line-height: 43px;
+    text-align: center;
+    z-index: 3;
+}
+
+.image_anim {
+    display: flex;
+    position: absolute;
+    bottom: 0%;
+    height: 650px;
+    height: 650px;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all 1.5s ease-out;
+}
+
+.image_anim.aparece1 {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.image_anim2 {
+    display: flex;
+    position: absolute;
+    bottom: 0%;
+    height: 650px;
+    left: 0;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: all 1.5s ease-out;
+}
+
+.image_anim2.aparece2 {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 /* Tela de login */
@@ -61,6 +257,7 @@ body {
     display: flex;
     width: 100%;
     height: 100vh;
+    background-color: #180404;
 }
 
 .foto-login {
@@ -116,6 +313,7 @@ body {
     font-size: 25px;
     color: black;
     text-decoration: none;
+
 }
 
 .email {
@@ -131,6 +329,7 @@ body {
     height: 35px;
     width: 210px;
     border-radius: 5px;
+    text-align:center;
 }
 
 .senha {
@@ -166,3 +365,194 @@ body {
     background-color: rgb(27, 27, 27);
     transition-duration: 0.5s;
 }
+
+.sem_cadastro {
+    margin-left: 75px;
+    margin-top: 15px;
+    font-family: sea;
+    font-size: 15px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+.card_erro {
+    display: none;
+    background-color: white;
+    color: black;
+    width: 300px;
+    position: fixed;
+    border-radius: 4px;
+    border: black 3px solid;
+    top: 475px;
+    right: 400px;
+  }
+
+  .card_erro #mensagem_erro{
+    font-family: sea;
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+/* Tela de cadastro*/
+
+.container_cadastro {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: start;
+    justify-content: space-evenly;
+    background-image: url(../assets/cadastro.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.cadastro_background {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin-top: 125px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 560px;
+    background-color: rgba(0, 0, 0, 0.745);
+    border-radius: 50px;
+}
+
+.texto-cadastro {
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+}
+
+.cadastro-frase {
+    margin-top: 15px;
+    font-family: sea;
+    font-size: 50px;
+    color: white;
+    text-decoration: none;
+}
+
+
+.fonte_cadastro {
+    display: flex;
+    margin-top: 15px;
+    font-family: sea;
+    font-size: 50px;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+}
+
+.texto_campo_branco {
+    font-family: sea;
+    font-size: 25px;
+    color: white;
+    text-decoration: none;
+}
+
+.nome_cadastro {
+    display: flex;
+    margin-right: 70px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-left: 70px;
+}
+
+.campo_cadastro {
+    display: flex;
+    height: 35px;
+    width: 250px;
+    border-radius: 5px;
+    text-align:center;
+}
+
+.email_cadastro {
+    display: flex;
+    margin-right: 70px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-left: 70px;
+}
+
+.senha_cadastro {
+    display: flex;
+    margin-right: 70px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-left: 70px;
+}
+
+.confirmar_senha_cadastro {
+    display: flex;
+    margin-right: 70px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-left: 70px;
+}
+
+.botao-cadastro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.texto_botao_cadastro {
+    font-family: sea;
+    font-size: 25px;
+    color: white;
+    text-decoration: none;
+    background-color: black;
+    border-radius: 10px;
+    width: 180px;
+    height: 50px;
+}
+
+.com_cadastro {
+    margin-top: 5px;
+    font-family: sea;
+    font-size: 15px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+/* Footer */
+
+.footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 65px;
+    text-decoration: none;
+}
+
+.texto_footer {
+    font-family: outrosea;
+    margin-top: 25px;
+    color: white;
+    font-size: 19px;
+    text-decoration: none;
+}
+
+.footer_nome{
+    text-decoration: none;
+    color: white;
+}
+
+/* Saiba mais */
+
