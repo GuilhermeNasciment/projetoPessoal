@@ -11,17 +11,21 @@
 <body>
     <div class="header">
         <a class="logo" href="../index_logado.html" id="imgPerfil"><img src="../assets/logo.png"></a>
-        <div class="logout"><a href="../index.html"><img src="../assets/saida.png" alt=""></a></div>
+        <div onclick="sair()" class="logout"><a href="../index.html"><img src="../assets/saida.png" alt=""></a></div>
     </div>
     <div class="container">
         <div class="card">
             <div class="profile">
                 <div class="profileIcon">
-                    <img src="../assets/Sample_User_Icon.png">
+                    <div id="foto_perfil" class="foto_usu">
+                        <div class="perfil">
+                            <div id="div_foto_perfil" class="foto_usu"></div>
+                        </div>
+                    </div>
                 </div>
                 <p id="p_usuario">Usuário</p>
                 <div class="quiz">
-                    <button class="botao_quiz" onclick="">Quiz</button>
+                    <a href="dashboard.html"><button class="botao_grafico" onclick="">Trailer</button></a>
                 </div>
                 <div class="grafico">
                     <a href="dashboard_grafico.html"><button class="botao_grafico" onclick="">Gráfico</button></a>
@@ -43,10 +47,22 @@
                     </div>
                 </div>
         </div>
-
     </div>
 </body>
 </html>
 <script>
+
+    function sair() {
+        sessionStorage.clear()
+    }
+
     p_usuario.innerHTML = sessionStorage.NOME_USUARIO
+
+    var fk_tripulacao = sessionStorage.TRIPULACAO_FAVORITA;
+
+    if (fk_tripulacao == 1) {
+        div_foto_perfil.innerHTML = `<img src="../assets/pen_icon.jpg">`
+    } else {
+        div_foto_perfil.innerHTML = `<img src="../assets/flame_icon.jpg">`
+    }
 </script>

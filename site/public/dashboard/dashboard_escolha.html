@@ -11,22 +11,27 @@
 <body>
     <div class="header">
         <a class="logo" href="../index_logado.html" id="imgPerfil"><img src="../assets/logo.png"></a>
+        <div onclick="sair()" class="logout"><a href="../index.html"><img src="../assets/saida.png" alt=""></a></div>
     </div>
     <div class="container">
         <div class="card">
             <div class="profile">
                 <div class="profileIcon">
-                    <img src="../assets/Sample_User_Icon.png">
+                    <div id="foto_perfil" class="foto_usu">
+                        <div class="perfil">
+                            <div id="div_foto_perfil" class="foto_usu"></div>
+                        </div>
+                    </div>
                 </div>
                 <p id="p_usuario">Usuário</p>
                 <div class="quiz">
-                    <button class="botao_quiz" onclick="">Quiz</button>
+                    <a href="dashboard.html"><button class="botao_grafico" onclick="">Trailer</button></a>
                 </div>
                 <div class="grafico">
                     <a href="dashboard_grafico.html"><button class="botao_grafico" onclick="">Gráfico</button></a>
                 </div>
                 <div class="escolha">
-                <button class="botao_escolha" onclick="mostrarEscolha()">Faça sua escolha</button>
+                    <a href="dashboard_escolha.html"><button class="botao_escolha" onclick="">Faça sua escolha</button></a>
             </div>
                     </div>
                 </div>
@@ -41,7 +46,7 @@
                     <div class="botoes">
                        <div class="selects">
                         <select onchange="decidirTrip()" id="tripulacao">
-                            <option value="0">Escolha:</option>
+                            <option value="0">Escolha</option>
                             <option value="1">Pendragon</option>
                             <option value="2">Flameheart</option>
                         </select>
@@ -49,13 +54,27 @@
                     </div>
                 </div>
         </div>
-
     </div>
 </body>
 </html>
 <script>
     p_usuario.innerHTML = sessionStorage.NOME_USUARIO
-   
+    
+    function sair() {
+        sessionStorage.clear()
+    }
+
+    p_usuario.innerHTML = sessionStorage.NOME_USUARIO
+
+    var fk_tripulacao = sessionStorage.TRIPULACAO_FAVORITA;
+
+    if (fk_tripulacao == null) {
+        div_foto_perfil.innerHTML = `<img src=../assets/Sample_User_Icon.png">`
+    } else if (fk_tripulacao == 1) {
+        div_foto_perfil.innerHTML = `<img src="../assets/pen_icon.jpg">`
+    }else {
+        div_foto_perfil.innerHTML = `<img src="../assets/flame_icon.jpg">`
+    }
 
             function decidirTrip() {
                 var tripulacaoVar = Number (tripulacao.value)
@@ -80,10 +99,53 @@
               
                 alert("Tripulação escolhida com sucesso");
 
+                fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: sessionStorage.EMAIL_USUARIO,
+                senhaServer: sessionStorage.SENHA_USUARIO
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
 
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+                    sessionStorage.SENHA_USUARIO = json.senha;
+                    sessionStorage.TRIPULACAO_FAVORITA = json.fkTripulacao;
+
+                    // setTimeout(function () {
+                    //     window.location = "dashboard/dashboard.html";
+                    // }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
                 setTimeout(() => {
-                    window.location = "dashboard.html";
-                }, 3000)
+                    window.location = "dashboard_grafico.html";
+                }, 1000)
 
                 limparFormulario();
                 finalizarAguardar();

@@ -18,16 +18,21 @@
 <body onload="obterDadosGrafico()">
     <div class="header">
         <a class="logo" href="../index_logado.html" id="imgPerfil"><img src="../assets/logo.png"></a>
+        <div onclick="sair()" class="logout"><a href="../index.html"><img src="../assets/saida.png" alt=""></a></div>
     </div>
     <div class="container">
         <div class="card">
             <div class="profile">
                 <div class="profileIcon">
-                    <img src="../assets/Sample_User_Icon.png">
+                    <div id="foto_perfil" class="foto_usu">
+                        <div class="perfil">
+                            <div id="div_foto_perfil" class="foto_usu"></div>
+                        </div>
+                    </div>
                 </div>
                 <p id="p_usuario">Usuário</p>
                 <div class="quiz">
-                    <button class="botao_quiz" onclick="">Quiz</button>
+                    <a href="dashboard.html"><button class="botao_grafico" onclick="">Trailer</button></a>
                 </div>
                 <div class="grafico">
                     <button class="botao_grafico" onclick="">Gráfico</button>
@@ -39,6 +44,7 @@
             </div>
         </div>
         <div class="texto_chart"><h1 class="texto_grafico">As escolhas dos marujos</h1></div>
+        <div class="kpi" id="div_kpi"></div>
         <div class="chart" id="grafico_tripulacao"><canvas id="myChart">
         </div>
 
@@ -49,6 +55,20 @@
 <script>
     p_usuario.innerHTML = sessionStorage.NOME_USUARIO
     let proximaAtualizacao;
+
+    function sair() {
+        sessionStorage.clear()
+    }
+
+    p_usuario.innerHTML = sessionStorage.NOME_USUARIO
+
+    var fk_tripulacao = sessionStorage.TRIPULACAO_FAVORITA;
+
+    if (fk_tripulacao == 1) {
+        div_foto_perfil.innerHTML = `<img src="../assets/pen_icon.jpg">`
+    } else {
+        div_foto_perfil.innerHTML = `<img src="../assets/flame_icon.jpg">`
+    }
 
 
 
@@ -96,6 +116,8 @@
 
         };
 
+        var trip_mais_votada = ""
+        var totalVotos = 0
 
         for (i = 0; i < resposta.length; i++) {
             var registro = resposta[i];
@@ -103,9 +125,13 @@
             dados.labels.push(registro.tripulacao);
             console.log("dados.datasets")
             console.log(dados.datasets)
-            
-
+            if(registro.voto > totalVotos) {
+                totalVotos = registro.voto
+                trip_mais_votada = registro.tripulacao
+            }
         }
+
+        div_kpi.innerHTML = `A tripulação mais votada é: ${trip_mais_votada} com um total de ${totalVotos} votos`
 
         const config = {
             type: 'pie',

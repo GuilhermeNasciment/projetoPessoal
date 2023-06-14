@@ -68,7 +68,7 @@ body {
 .profile {
   width: 15vh;
     height: 15vh;
-    background-color: white;
+    background-color: transparent;
     border-radius: 100%;
     margin-top: 50px;
 }
@@ -345,4 +345,29 @@ body {
 .logout img {
   height: 50px;
   width: 50px;
+}
+
+.kpi {
+  font-family: outrosea;
+    font-size: 15px;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+  height: 85px;
+  width: 150px;
+  position: absolute;
+  margin-top: 300px;
+  right: 25px;
+  background-color: #1E1E1E;
+}
+
+#tripulacao {
+  font-family: outrosea;
+  text-align: center;
+  height: 50px;
+  width: 300px;
+  background-color: #1E1E1E;
+  color: white;
+  font-size: 2rem;
+  border: transparent;
 }
