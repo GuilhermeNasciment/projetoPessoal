@@ -60,7 +60,41 @@ body {
     background-image: url(../assets/indexBackground.png);
     background-size: 100%;
     background-repeat: no-repeat;
-    
+}
+
+.index_texto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 217px;
+    height: 100px;
+    width: 521px;
+}
+
+.p_index {
+    font-family: outrosea;
+    font-weight: 400;
+    color: white;
+    font-size: 70px;
+    text-align: center;
+}
+
+.index_texto2 {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    margin-top: 430px;
+    height: 100px;
+    width: 567px;
+}
+
+.p_index2 {
+    font-family: outrosea;
+    font-weight: 400;
+    color: white;
+    font-size: 25px;
+    text-align: center;
 }
 
 .grad_superior {
